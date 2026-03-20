@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 11.0-b16 (Sun Microsystems Inc.)
+Main-Class: SIMAR.MainFrame
+Class-Path: lib/AbsoluteLayout.jar lib/jakarta-regexp-1.5.jar lib/nimr
+ odlf.j16.jar
+X-COMMENT: Main-Class will be added automatically by build
+
