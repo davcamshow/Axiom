@@ -18,18 +18,19 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
     
     public VMatrizAdyacencia() {
         setLayout(new GridBagLayout());
-        setPreferredSize(new Dimension(370, 320));
+        setPreferredSize(new Dimension(450, 330));
         sehandler = new SelectorEventosHandler();
         crearCeldas();
         
         JLabel et_tabla = new JLabel("Matriz de Adyacencia");
         et_tabla.setFont(new Font("Arial", Font.BOLD, 12));
+        et_tabla.setForeground(Color.BLACK);
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 10;
-        gbc.insets = new Insets(0, 130, 10, 0);
+        gbc.insets = new Insets(0, 150, 10, 0);
         add(et_tabla, gbc);
     }
     
@@ -44,9 +45,11 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 jb_celdas[i][j] = new JButton("0");
-                jb_celdas[i][j].setPreferredSize(new Dimension(30, 30));
+                jb_celdas[i][j].setPreferredSize(new Dimension(35, 35));
                 jb_celdas[i][j].setMargin(new Insets(0, 0, 0, 0));
                 jb_celdas[i][j].setBackground(Color.WHITE);
+                jb_celdas[i][j].setForeground(Color.BLACK);
+                jb_celdas[i][j].setFont(new Font("Arial", Font.BOLD, 12));
                 jb_celdas[i][j].addActionListener(this);
             }
         }
@@ -56,16 +59,16 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
             char c = (char)('a' + i);
             
             jb_nodos[i][0] = new JButton(String.valueOf(c));
-            jb_nodos[i][0].setPreferredSize(new Dimension(30, 30));
-            jb_nodos[i][0].setBackground(new Color(17, 136, 255));
-            jb_nodos[i][0].setForeground(Color.WHITE);
+            jb_nodos[i][0].setPreferredSize(new Dimension(35, 35));
+            jb_nodos[i][0].setBackground(new Color(230, 230, 250));
+            jb_nodos[i][0].setForeground(Color.BLACK);
             jb_nodos[i][0].setFont(font);
             jb_nodos[i][0].setFocusable(false);
             
             jb_nodos[i][1] = new JButton(String.valueOf(c));
-            jb_nodos[i][1].setPreferredSize(new Dimension(30, 30));
-            jb_nodos[i][1].setBackground(new Color(17, 136, 255));
-            jb_nodos[i][1].setForeground(Color.WHITE);
+            jb_nodos[i][1].setPreferredSize(new Dimension(35, 35));
+            jb_nodos[i][1].setBackground(new Color(230, 230, 250));
+            jb_nodos[i][1].setForeground(Color.BLACK);
             jb_nodos[i][1].setFont(font);
             jb_nodos[i][1].setFocusable(false);
             
@@ -79,7 +82,7 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
         
         // Colocar componentes usando GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(1, 1, 1, 1);
+        gbc.insets = new Insets(2, 2, 2, 2);
         
         // Colocar etiquetas superiores
         for (int i = 0; i < 9; i++) {
@@ -130,12 +133,14 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 jb_celdas[i][j].setBackground(Color.WHITE);
+                jb_celdas[i][j].setForeground(Color.BLACK);
                 jb_celdas[i][j].setEnabled(false);
                 if (i < length && j < length) {
                     jb_celdas[i][j].setText(matriz[i][j] ? "1" : "0");
                 } else {
                     jb_celdas[i][j].setText("0");
                     jb_celdas[i][j].setBackground(Color.BLACK);
+                    jb_celdas[i][j].setForeground(Color.WHITE);
                 }
             }
         }
@@ -143,7 +148,9 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
         for (int i = 0; i < nombres.size(); i++) {
             String nombre = nombres.get(i);
             jb_nodos[i][0].setText(nombre);
+            jb_nodos[i][0].setForeground(Color.BLACK);
             jb_nodos[i][1].setText(nombre);
+            jb_nodos[i][1].setForeground(Color.BLACK);
         }
         
         // Configurar checkboxes
@@ -190,6 +197,7 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
             for (int i = 0; i < length; i++) {
                 for (int j = 0; j < length; j++) {
                     jb_celdas[i][j].setEnabled(true);
+                    jb_celdas[i][j].setForeground(Color.BLACK);
                 }
             }
             for (int i = 0; i < 8; i++) {
@@ -199,6 +207,9 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     jb_celdas[i][j].setEnabled(false);
+                    if (i < length && j < length) {
+                        jb_celdas[i][j].setForeground(Color.BLACK);
+                    }
                 }
             }
             for (int i = 0; i < 8; i++) {
@@ -222,9 +233,11 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
                     for (int j = 0; j < 9; j++) {
                         if (i >= length || j >= length) {
                             jb_celdas[i][j].setBackground(Color.BLACK);
+                            jb_celdas[i][j].setForeground(Color.WHITE);
                             jb_celdas[i][j].setEnabled(false);
                         } else {
                             jb_celdas[i][j].setBackground(Color.WHITE);
+                            jb_celdas[i][j].setForeground(Color.BLACK);
                         }
                     }
                 }
@@ -236,10 +249,11 @@ public class VMatrizAdyacencia extends JPanel implements ActionListener {
                 for (int i = 0; i < 9; i++) {
                     for (int j = 0; j < 9; j++) {
                         jb_celdas[i][j].setBackground(Color.WHITE);
+                        jb_celdas[i][j].setForeground(Color.BLACK);
                         jb_celdas[i][j].setEnabled(true);
                     }
                 }
             }
         }
     }
-}       
+}
